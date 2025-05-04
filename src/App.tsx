@@ -381,12 +381,26 @@ function App() {
           </div>
           <div className="flex w-full max-w-[300px] items-center h-8">
             <span className="w-28 sm:w-36 text-left text-xs sm:text-sm">QR Color</span>
-            <div className="flex-grow flex justify-center">
+            <div className="flex-grow flex items-center gap-2">
               <input 
                 type="color" 
                 value={qrColor} 
                 onChange={(e) => setQrColor(e.target.value)} 
                 className="w-8 h-8 cursor-pointer"
+              />
+              <Input
+                type="text"
+                value={qrColor}
+                onChange={(e) => {
+                  // Validate hex code format
+                  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+                  if (hexRegex.test(e.target.value) || e.target.value.startsWith('#')) {
+                    setQrColor(e.target.value);
+                  }
+                }}
+                placeholder="#000000"
+                className="w-20 h-8 text-xs"
+                maxLength={7}
               />
             </div>
           </div>
