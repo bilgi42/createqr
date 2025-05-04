@@ -1,0 +1,21 @@
+{
+  "name": "create qr",
+  "short_name": "create qr",
+  "description": "create qr for free. unlimited, ad free and open source.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/qrcode.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/qrcode.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
