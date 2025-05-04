@@ -438,7 +438,7 @@ function App() {
       {/* Footer Text */}
       <footer className="text-xs text-gray-500 mb-8 flex flex-col items-center gap-2">
         <div className="flex items-center gap-2">
-          built with vite, ts and shadcn and ❤️
+          built with vite, ts, shadcn and ❤️
           <a 
             href="https://github.com/bilgi42/createqr" 
             target="_blank" 
