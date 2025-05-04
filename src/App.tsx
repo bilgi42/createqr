@@ -399,7 +399,7 @@ function App() {
                   }
                 }}
                 placeholder="#000000"
-                className="w-20 h-8 text-xs"
+                className="w-24 h-8 text-xs"
                 maxLength={7}
               />
             </div>
