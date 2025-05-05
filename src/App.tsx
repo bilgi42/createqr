@@ -392,15 +392,24 @@ function App() {
                 type="text"
                 value={qrColor}
                 onChange={(e) => {
-                  // Validate hex code format
-                  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-                  if (hexRegex.test(e.target.value) || e.target.value.startsWith('#')) {
-                    setQrColor(e.target.value);
+                  // Get input value
+                  let inputValue = e.target.value;
+                  
+                  // If user pastes a code with hashtag, accept it
+                  if (inputValue.startsWith('#')) {
+                    setQrColor(inputValue);
+                  } 
+                  // If user pastes a code without hashtag, add it
+                  else if (/^[A-Fa-f0-9]{3,6}$/.test(inputValue)) {
+                    setQrColor('#' + inputValue);
+                  }
+                  // Otherwise, just set the value for manual typing
+                  else {
+                    setQrColor(inputValue);
                   }
                 }}
                 placeholder="#000000"
                 className="w-24 h-8 text-xs"
-                maxLength={7}
               />
             </div>
           </div>
