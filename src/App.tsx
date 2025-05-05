@@ -13,6 +13,7 @@ type FormValues = {
 function App() {
   const [qrValue, setQrValue] = useState("In seeking the unattainable, simplicity only gets in the way.");
   const [qrColor, setQrColor] = useState("#000000");
+  const [bgColor, setBgColor] = useState("#FFFFFF");
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<"L" | "M" | "Q" | "H">("M");
   const [cornerRadius, setCornerRadius] = useState(0);
   const [logoImage, setLogoImage] = useState<string | null>(null);
@@ -319,7 +320,7 @@ function App() {
         <div ref={qrRef}>
           <QR
             color={qrColor}
-            backgroundColor="#fff"
+            backgroundColor={bgColor}
             rounding={cornerRadius}
             cutout={!!logoImage}
             cutoutElement={
@@ -409,6 +410,40 @@ function App() {
                   }
                 }}
                 placeholder="#000000"
+                className="w-24 h-8 text-xs"
+              />
+            </div>
+          </div>
+          <div className="flex w-full max-w-[300px] items-center h-8">
+            <span className="w-28 sm:w-36 text-left text-xs sm:text-sm">Background</span>
+            <div className="flex-grow flex items-center gap-2">
+              <input 
+                type="color" 
+                value={bgColor} 
+                onChange={(e) => setBgColor(e.target.value)} 
+                className="w-8 h-8 cursor-pointer"
+              />
+              <Input
+                type="text"
+                value={bgColor}
+                onChange={(e) => {
+                  // Get input value
+                  let inputValue = e.target.value;
+                  
+                  // If user pastes a code with hashtag, accept it
+                  if (inputValue.startsWith('#')) {
+                    setBgColor(inputValue);
+                  } 
+                  // If user pastes a code without hashtag, add it
+                  else if (/^[A-Fa-f0-9]{3,6}$/.test(inputValue)) {
+                    setBgColor('#' + inputValue);
+                  }
+                  // Otherwise, just set the value for manual typing
+                  else {
+                    setBgColor(inputValue);
+                  }
+                }}
+                placeholder="#FFFFFF"
                 className="w-24 h-8 text-xs"
               />
             </div>
